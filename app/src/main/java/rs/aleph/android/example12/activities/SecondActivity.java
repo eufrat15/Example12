@@ -5,67 +5,77 @@ import android.app.Activity;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 import rs.aleph.android.example12.R;
 import rs.aleph.android.example12.activities.model.Hrana;
+import rs.aleph.android.example12.activities.model.Kategorija;
+import rs.aleph.android.example12.activities.provider.HranaProvider;
+import rs.aleph.android.example12.activities.provider.KategorijaProvider;
 
 // Each activity extends Activity class
 public class SecondActivity extends Activity {
 
+
     private int position = 0;
 
-    private Hrana[] foods = new Hrana[] {
 
-            new Hrana("hamburger.jpg", "Hamburger", "description...", "category...", "ingridients...", 500, 300),
-            new Hrana("pizza.jpg", "Pizza", "description...", "category...", "ingridients...", 400, 200),
-            new Hrana("soup.jpg", "Soup", "description...", "category...", "ingridients...", 300, 100),
-            new Hrana("spaghetti.jpg", "Spaghetti", "description...", "category...", "ingridients...", 450, 250),
-
-    };
-
-
-
-    // onCreate method is a lifecycle method called when he activity is starting
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        // Each lifecycle method should call the method it overrides
+
         super.onCreate(savedInstanceState);
-        // setContentView method draws UI
+
         setContentView(R.layout.activity_second);
 
-        // Shows a toast message (a pop-up message)
+
         Toast toast = Toast.makeText(getBaseContext(), "SecondActivity.onCreate()", Toast.LENGTH_SHORT);
         toast.show();
-    }
-
-    final int position = getIntent().getIntExtra("position", 0);
 
 
-    TextView tvName = (TextView) findViewById(R.id.tv_name);
-        tvName.setText(foods[position].getName());
+        final int position = getIntent().getIntExtra("position", 0);
 
+        ImageView ivImage = (ImageView) findViewById(R.id.iv_image);
+        InputStream is = null;
 
-    TextView tvDescription = (TextView) findViewById(R.id.tv_description);
-        tvDescription.setText(foods[position].getDescription());
-
-
-    ImageView ivImage = (ImageView) findViewById(R.id.iv_image);
-    InputStream is = null;
         try {
-        is = getAssets().open(foods[position].getImage());
-        Drawable drawable = Drawable.createFromStream(is, null);
-        ivImage.setImageDrawable(drawable);
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
+            is = getAssets().open(HranaProvider.getHranabyId(position).getImage());
+            Drawable drawable = Drawable.createFromStream(is, null);
+            ivImage.setImageDrawable(drawable);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        TextView tvName = (TextView) findViewById(R.id.tv_name);
+        tvName.setText(HranaProvider.getHranabyId)(position).getName());
+
+
+        /*TextView tvDescription = (TextView) findViewById(R.id.tv_description);
+        tvDescription.setText(HranaProvider.getHranabyId(position).getDescription());
+
+        */
+        Spinner category = (Spinner) findViewById(R.id.sp_category);
+        List<String> categories = KategorijaProvider.getKategorijaNames();
+        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, categories);
+        category.setAdapter(adapter);
+        category.setSelection((int)HranaProvider.getHranabyId(position).getCategory().getId());
+
+
+
+    });
+
 
 
     // onStart method is a lifecycle method called after onCreate (or after onRestart when the
@@ -124,5 +134,7 @@ public class SecondActivity extends Activity {
 
         Toast toast = Toast.makeText(getBaseContext(), "SecondActivity.onDestroy()", Toast.LENGTH_SHORT);
         toast.show();
+
     }
+
 }

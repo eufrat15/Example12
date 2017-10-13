@@ -8,13 +8,13 @@
 
     <application
         android:allowBackup="true"
-        android:label="Activities"
+        android:label="Views"
         android:theme="@style/Theme.AppCompat.Light">
 
         <!-- Declares 1st (main) activity. Action "MAIN" and category "LAUNCHER" properties makes it visible in the application launcher -->
         <activity
             android:name="rs.aleph.android.example12.activities.FirstActivity"
-            android:label="Activities">
+            android:label="First Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -24,7 +24,7 @@
         <!-- Declares 2nd activity -->
         <activity
             android:name=".activities.SecondActivity"
-            android:label="Activities">
+            android:label="Second Activity">
         </activity>
 
     </application>

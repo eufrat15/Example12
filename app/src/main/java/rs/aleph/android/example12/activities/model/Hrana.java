@@ -10,8 +10,8 @@ public class Hrana {
     private String image;
     private String name;
     private String description;
-    private String category;
-    private String ingridients;
+    private Kategorija category;
+    private Sastojci ingridients;
     private int kcal;
     private double price;
 
@@ -20,7 +20,8 @@ public class Hrana {
 
     }
 
-    public Hrana(String image, String name, String description, String category, String ingridients, int kcal, double price) {
+    public Hrana(int id, String image, String name, String description, Kategorija category, Sastojci ingridients, int kcal, double price) {
+        this.id = id;
         this.image = image;
         this.name = name;
         this.description = description;
@@ -62,19 +63,19 @@ public class Hrana {
         this.description = description;
     }
 
-    public String getCategory() {
+    public Kategorija getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Kategorija category) {
         this.category = category;
     }
 
-    public String getIngridients() {
+    public Sastojci getIngridients() {
         return ingridients;
     }
 
-    public void setIngridients(String ingridients) {
+    public void setIngridients(Sastojci ingridients) {
         this.ingridients = ingridients;
     }
 
@@ -95,18 +96,7 @@ public class Hrana {
     }
 
     @Override
-    public String toString() {
-        return "Hrana{" +
-                "id=" + id +
-                ", image='" + image + '\'' +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", category='" + category + '\'' +
-                ", ingridients='" + ingridients + '\'' +
-                ", kcal='" + kcal + '\'' +
-                ", price='" + price +
-                '}';
-    }
+    public String toString() { return name; }
 }
 
 

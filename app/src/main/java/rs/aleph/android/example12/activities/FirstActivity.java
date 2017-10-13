@@ -2,7 +2,6 @@ package rs.aleph.android.example12.activities;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,7 +9,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.List;
+
 import rs.aleph.android.example12.R;
+import rs.aleph.android.example12.activities.model.Hrana;
+import rs.aleph.android.example12.activities.provider.HranaProvider;
 
 // Each activity extends Activity class
 public class FirstActivity extends Activity {
@@ -28,10 +31,9 @@ public class FirstActivity extends Activity {
 		Toast toast = Toast.makeText(getBaseContext(), "FirstActivity.onCreate()", Toast.LENGTH_SHORT);
 		toast.show();
 
-		final String[] foods = getResources().getStringArray(R.array.foods);
+        final List<String> hranaNames = HranaProvider.getHranaNames();
 
-
-		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, R.layout.list_item, foods);
+		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, R.layout.list_item, hranaNames);
 		ListView listView = (ListView) findViewById(R.id.listofFoods);
 
 
@@ -45,7 +47,6 @@ public class FirstActivity extends Activity {
 				startActivity(intent);
 			}
 		});
-
 	}
 
 	// onStart method is a lifecycle method called after onCreate (or after onRestart when the
@@ -125,12 +126,4 @@ public class FirstActivity extends Activity {
 		// startActivity method starts an activity
         startActivity(intent);
 	}
-
-	// Called when btnOpen is clicked
-    public void btnOpenBrowserClicked(View view) {
-		// This is an implicit intent
-        Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://developer.android.com"));
-		// startActivity method starts an activity
-		startActivity(i);
-    }
 }

@@ -21,8 +21,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/tv_category"
+    <Spinner
+        android:id="@+id/sp_category"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
