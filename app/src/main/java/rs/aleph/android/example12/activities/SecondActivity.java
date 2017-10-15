@@ -59,22 +59,20 @@ public class SecondActivity extends Activity {
 
 
         TextView tvName = (TextView) findViewById(R.id.tv_name);
-        tvName.setText(HranaProvider.getHranabyId)(position).getName());
+        tvName.setText(HranaProvider.getHranabyId(position).getName());
 
 
-        /*TextView tvDescription = (TextView) findViewById(R.id.tv_description);
+        TextView tvDescription = (TextView) findViewById(R.id.tv_description);
         tvDescription.setText(HranaProvider.getHranabyId(position).getDescription());
 
-        */
+
         Spinner category = (Spinner) findViewById(R.id.sp_category);
         List<String> categories = KategorijaProvider.getKategorijaNames();
         ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, categories);
         category.setAdapter(adapter);
         category.setSelection((int)HranaProvider.getHranabyId(position).getCategory().getId());
 
-
-
-    });
+    }
 
 
 
