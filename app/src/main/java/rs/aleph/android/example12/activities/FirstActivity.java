@@ -21,15 +21,8 @@ public class FirstActivity extends Activity {
 	// onCreate method is a lifecycle method called when he activity is starting
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 	{
-
-		// Each lifecycle method should call the method it overrides
 		super.onCreate(savedInstanceState);
-		// setContentView method draws UI
 		setContentView(R.layout.activity_main);
-
-		// Shows a toast message (a pop-up message)
-		Toast toast = Toast.makeText(getBaseContext(), "FirstActivity.onCreate()", Toast.LENGTH_SHORT);
-		toast.show();
 
         final List<String> hranaNames = HranaProvider.getHranaNames();
 

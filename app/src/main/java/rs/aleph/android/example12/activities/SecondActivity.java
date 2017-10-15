@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -21,34 +22,25 @@ import java.util.List;
 import rs.aleph.android.example12.R;
 import rs.aleph.android.example12.activities.model.Hrana;
 import rs.aleph.android.example12.activities.model.Kategorija;
+import rs.aleph.android.example12.activities.model.Sastojci;
 import rs.aleph.android.example12.activities.provider.HranaProvider;
 import rs.aleph.android.example12.activities.provider.KategorijaProvider;
+import rs.aleph.android.example12.activities.provider.SastojciProvider;
 
 // Each activity extends Activity class
 public class SecondActivity extends Activity {
 
-
     private int position = 0;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_second);
-
-
-        Toast toast = Toast.makeText(getBaseContext(), "SecondActivity.onCreate()", Toast.LENGTH_SHORT);
-        toast.show();
-
 
         final int position = getIntent().getIntExtra("position", 0);
 
         ImageView ivImage = (ImageView) findViewById(R.id.iv_image);
         InputStream is = null;
-
         try {
             is = getAssets().open(HranaProvider.getHranabyId(position).getImage());
             Drawable drawable = Drawable.createFromStream(is, null);
@@ -72,66 +64,11 @@ public class SecondActivity extends Activity {
         category.setAdapter(adapter);
         category.setSelection((int)HranaProvider.getHranabyId(position).getCategory().getId());
 
-    }
-
-
-
-    // onStart method is a lifecycle method called after onCreate (or after onRestart when the
-    // activity had been stopped, but is now again being displayed to the user)
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        Toast toast = Toast.makeText(getBaseContext(), "SecondActivity.onStart()", Toast.LENGTH_SHORT);
-        toast.show();
-    }
-
-    // onRestart method is a lifecycle method called after onStop when the current activity is
-    // being re-displayed to the user
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-
-        Toast toast = Toast.makeText(getBaseContext(), "SecondActivity.onRestart()", Toast.LENGTH_SHORT);
-        toast.show();
-    }
-
-    // onResume method is a lifecycle method called after onRestoreInstanceState, onRestart, or
-    // onPause, for your activity to start interacting with the user
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        Toast toast = Toast.makeText(getBaseContext(), "SecondActivity.onResume()", Toast.LENGTH_SHORT);
-        toast.show();
-    }
-
-    // onPause method is a lifecycle method called when an activity is going into the background,
-    // but has not (yet) been killed
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-        Toast toast = Toast.makeText(getBaseContext(), "SecondActivity.onPause()", Toast.LENGTH_SHORT);
-        toast.show();
-    }
-
-    // onStop method is a lifecycle method called when the activity are no longer visible to the user
-    @Override
-    protected void onStop() {
-        super.onStop();
-
-        Toast toast = Toast.makeText(getBaseContext(), "SecondActivity.onStop()", Toast.LENGTH_SHORT);
-        toast.show();
-    }
-
-    // onDestroy method is a lifecycle method that perform any final cleanup before an activity is destroyed
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-        Toast toast = Toast.makeText(getBaseContext(), "SecondActivity.onDestroy()", Toast.LENGTH_SHORT);
-        toast.show();
+        ListView listView = (ListView) findViewById(R.id.lv_list_view);
+        List<String> list = SastojciProvider.getSastojciNames();
+        ArrayAdapter<String> adapter2 = new ArrayAdapter(this, android.R.layout.simple_list_item_1, list);
+        listView.setAdapter(adapter2);
+        listView.setSelection((int) HranaProvider.getHranabyId(position).getIngridients().getId());
 
     }
 

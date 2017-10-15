@@ -22,9 +22,7 @@ public class Kategorija {
 
         this.id = id;
         this.name = name;
-
         foods = new ArrayList<>();
-
     }
 
     public int getId() {

@@ -22,7 +22,6 @@ public class Sastojci {
 
         this.id = id;
         this.name = name;
-
         foods = new ArrayList<>();
     }
 
