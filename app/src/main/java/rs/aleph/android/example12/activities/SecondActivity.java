@@ -37,6 +37,9 @@ public class SecondActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second_relative);
 
+        Toast toast = Toast.makeText(getBaseContext(), "SecondActivity.onCreate()", Toast.LENGTH_SHORT);
+        toast.show();
+
         final int position = getIntent().getIntExtra("position", 0);
 
         ImageView ivImage = (ImageView) findViewById(R.id.iv_image);
@@ -48,7 +51,6 @@ public class SecondActivity extends Activity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
 
         TextView tvName = (TextView) findViewById(R.id.tv_name);
         tvName.setText(HranaProvider.getHranabyId(position).getName());
