@@ -37,9 +37,6 @@ public class SecondActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second_relative);
 
-        Toast toast = Toast.makeText(getBaseContext(), "SecondActivity.onCreate()", Toast.LENGTH_SHORT);
-        toast.show();
-
         final int position = getIntent().getIntExtra("position", 0);
 
         ImageView ivImage = (ImageView) findViewById(R.id.iv_image);
@@ -58,6 +55,12 @@ public class SecondActivity extends Activity {
 
         TextView tvDescription = (TextView) findViewById(R.id.tv_description);
         tvDescription.setText(HranaProvider.getHranabyId(position).getDescription());
+
+        TextView tvKcal = (TextView) findViewById(R.id.tv_kcal);
+        tvKcal.setText(Integer.toString(HranaProvider.getHranabyId(position).getKcal()));
+
+        TextView tvPrice = (TextView) findViewById(R.id.tv_price);
+        tvPrice.setText(Double.toString(HranaProvider.getHranabyId(position).getPrice()));
 
 
         Spinner category = (Spinner) findViewById(R.id.sp_category);
