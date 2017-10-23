@@ -2,21 +2,11 @@ package rs.aleph.android.example12.activities;
 
 import android.app.Activity;
 import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
-
-import java.util.List;
 
 import rs.aleph.android.example12.R;
 import rs.aleph.android.example12.activities.fragments.DetailFragment;
 import rs.aleph.android.example12.activities.fragments.ListFragment;
-import rs.aleph.android.example12.activities.model.Hrana;
-import rs.aleph.android.example12.activities.provider.HranaProvider;
 
 
 public class FirstActivity extends Activity implements ListFragment.OnItemSelectedListener {
@@ -55,8 +45,6 @@ public class FirstActivity extends Activity implements ListFragment.OnItemSelect
 
 	@Override
 	public void onItemSelected(int position) {
-
-		Toast.makeText(getBaseContext(), "FirstActivity.onItemSelected()", Toast.LENGTH_SHORT).show();
 
 		if (landscape) {
 			DetailFragment detailFragment = (DetailFragment) getFragmentManager().findFragmentById(R.id.detail_view);

@@ -1,9 +1,9 @@
 package rs.aleph.android.example12.activities.fragments;
 
-import android.app.Activity;
+
+import android.app.Fragment;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,35 +44,46 @@ public class DetailFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
 
-            super.onActivityCreated(savedInstanceState);
+        super.onActivityCreated(savedInstanceState);
 
-            if (savedInstanceState != null) {
-                position = savedInstanceState.getInt("position", 0);
-            }
+        if (savedInstanceState != null) {
+            position = savedInstanceState.getInt("position", 0);
+        }
 
-            ImageView ivImage = (ImageView) getView().findViewById(R.id.iv_image);
-            InputStream is = null;
-            try {
-                is = getActivity().getAssets().open(HranaProvider.getHranabyId(position).getImage());
-                Drawable drawable = Drawable.createFromStream(is, null);
-                ivImage.setImageDrawable(drawable);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        ImageView ivImage = (ImageView) getView().findViewById(R.id.iv_image);
+        InputStream is = null;
+        try {
+            is = getActivity().getAssets().open(HranaProvider.getHranabyId(position).getImage());
+            Drawable drawable = Drawable.createFromStream(is, null);
+            ivImage.setImageDrawable(drawable);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-            TextView tvName = (TextView) getView().findViewById(R.id.tv_name);
-            tvName.setText(HranaProvider.getHranabyId(position).getName());
+        TextView tvName = (TextView) getView().findViewById(R.id.tv_name);
+        tvName.setText(HranaProvider.getHranabyId(position).getName());
 
-            TextView tvDescription = (TextView) getView().findViewById(R.id.tv_description);
-            tvDescription.setText(HranaProvider.getHranabyId(position).getDescription());
+        TextView tvDescription = (TextView) getView().findViewById(R.id.tv_description);
+        tvDescription.setText(HranaProvider.getHranabyId(position).getDescription());
 
-            Spinner category = (Spinner) getView().findViewById(R.id.sp_category);
-            List<String> kategorije = KategorijaProvider.getKategorijaNames();
-            ArrayAdapter<String> adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, kategorije);
-            category.setAdapter(adapter);
-            category.setSelection((int)HranaProvider.getHranabyId(position).getCategory().getId());
+        Spinner category = (Spinner) getView().findViewById(R.id.sp_category);
+        List<String> kategorije = KategorijaProvider.getKategorijaNames();
+        ArrayAdapter<String> adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, kategorije);
+        category.setAdapter(adapter);
+        category.setSelection((int)HranaProvider.getHranabyId(position).getCategory().getId());
 
-                }
+        TextView tvIngridients = (TextView) getView().findViewById(R.id.tv_ingridients);
+        tvIngridients.setText((CharSequence) HranaProvider.getHranabyId(position).getIngridients());
+
+        TextView hranaKcal = (TextView) getView().findViewById(R.id.tv_kcal);
+        String stringdouble = Double.toString(HranaProvider.getHranabyId(position).getKcal());
+        hranaKcal.setText(stringdouble);
+
+        TextView hranaPrice = (TextView) getView().findViewById(R.id.tv_price);
+        stringdouble = Double.toString(HranaProvider.getHranabyId(position).getPrice());
+        hranaPrice.setText(stringdouble);
+
+    }
 
 
 
