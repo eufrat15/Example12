@@ -23,20 +23,20 @@ public class FirstActivity extends Activity implements ListFragment.OnItemSelect
 		if (savedInstanceState == null) {
 			FragmentTransaction ft = getFragmentManager().beginTransaction();
 			ListFragment listFragment = new ListFragment();
-			ft.add(R.id.list_view, listFragment, "List_Fragment_1");
+			ft.add(R.id.fl_list, listFragment, "List_Fragment_1");
 			ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
 			ft.commit();
 		}
 
-		if (findViewById(R.id.detail_view) != null) {
+		if (findViewById(R.id.fl_detail) != null) {
 			landscape = true;
 			getFragmentManager().popBackStack();
 
-			DetailFragment detailFragment = (DetailFragment) getFragmentManager().findFragmentById(R.id.detail_view);
+			DetailFragment detailFragment = (DetailFragment) getFragmentManager().findFragmentById(R.id.fl_detail);
 			if (detailFragment == null) {
 				FragmentTransaction ft = getFragmentManager().beginTransaction();
 				detailFragment = new DetailFragment();
-				ft.replace(R.id.detail_view, detailFragment, "Detail_Fragment_1");
+				ft.replace(R.id.fl_detail, detailFragment, "Detail_Fragment_1");
 				ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
 				ft.commit();
 			}
@@ -47,13 +47,13 @@ public class FirstActivity extends Activity implements ListFragment.OnItemSelect
 	public void onItemSelected(int position) {
 
 		if (landscape) {
-			DetailFragment detailFragment = (DetailFragment) getFragmentManager().findFragmentById(R.id.detail_view);
+			DetailFragment detailFragment = (DetailFragment) getFragmentManager().findFragmentById(R.id.fl_detail);
 			detailFragment.updateContent(position);
 		} else {
 			DetailFragment detailFragment = new DetailFragment();
 			detailFragment.setContent(position);
 			FragmentTransaction ft = getFragmentManager().beginTransaction();
-			ft.replace(R.id.list_view, detailFragment, "Detail_Fragment_2");
+			ft.replace(R.id.fl_list, detailFragment, "Detail_Fragment_2");
 			ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
 			ft.addToBackStack(null);
 			ft.commit();
