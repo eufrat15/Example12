@@ -15,21 +15,33 @@ public class HranaProvider {
 
     public static List<Hrana> getFoods() {
 
-        Kategorija grilovano = new Kategorija(0, "Grilovano");
-        Kategorija kuvano = new Kategorija(1, "Kuvano");
-        Kategorija peceno = new Kategorija(2, "Peceno");
+        Kategorija hamburger = new Kategorija(0, "Hamburger");
+        Kategorija pizza = new Kategorija(1, "Pizza");
+        Kategorija spaghetti = new Kategorija(2, "Spaghetti");
 
-        Sastojci hamburger = new Sastojci(0, "Mleveno meso, lepinja, luk, premazi, zacini");
-        Sastojci pizza = new Sastojci(1, "Sir, sampinjoni, kecap, origano, sunkarica");
-        Sastojci soup = new Sastojci(2, "voda, so, vegeta");
-        Sastojci spaghetti = new Sastojci(3, "Mleveno meso, testenina, kecap, origano");
+        ArrayList<Sastojci> hamburgerSas = new ArrayList<>();
+        hamburgerSas.add(new Sastojci(0, "mleveno meso"));
+        hamburgerSas.add(new Sastojci(1, "salata"));
+        hamburgerSas.add(new Sastojci(2, "lepinja"));
+        hamburgerSas.add(new Sastojci(3, "premazi"));
+
+        ArrayList<Sastojci> pizzaSas = new ArrayList<>();
+        pizzaSas.add(new Sastojci(0, "kackavalj"));
+        pizzaSas.add(new Sastojci(1, "masline"));
+        pizzaSas.add(new Sastojci(2, "pecurke"));
+        pizzaSas.add(new Sastojci(3, "salama"));
+
+        ArrayList<Sastojci> spaghettiSas = new ArrayList<>();
+        spaghettiSas.add(new Sastojci(0, "mleveno meso"));
+        spaghettiSas.add(new Sastojci(1, "spagete"));
+        spaghettiSas.add(new Sastojci(2, "bolonjeze sos"));
+        spaghettiSas.add(new Sastojci(3, "kecap"));
 
 
         List<Hrana> foods = new ArrayList<>();
-        foods.add(new Hrana(0, "hamburger.jpg", "Hamburger", "description...", grilovano, hamburger, 500, 300));
-        foods.add(new Hrana(1, "pizza.jpg", "Pizza", "description...", peceno, pizza, 400, 200));
-        foods.add(new Hrana(2, "soup.jpg", "Soup", "description...", kuvano, soup, 300, 100));
-        foods.add(new Hrana(3, "spaghetti.jpg", "Spaghetti", "description...", kuvano, spaghetti, 450, 250));
+        foods.add(new Hrana(0, "hamburger.jpg", "Hamburger", "description...", hamburger, hamburgerSas, 500, 300));
+        foods.add(new Hrana(1, "pizza.jpg", "Pizza", "description...", pizza, pizzaSas, 400, 200));
+        foods.add(new Hrana(2, "spaghetti.jpg", "Spaghetti", "description...", spaghetti, spaghettiSas, 450, 250));
         return foods;
     }
 
@@ -38,31 +50,41 @@ public class HranaProvider {
         List<String> names = new ArrayList<>();
         names.add("Hamburger");
         names.add("Pizza");
-        names.add("Soup");
         names.add("Spaghetti");
         return names;
     }
 
     public static Hrana getHranabyId(int id) {
 
-        Kategorija grilovano = new Kategorija(0, "Grilovano");
-        Kategorija kuvano = new Kategorija(1, "Kuvano");
-        Kategorija peceno = new Kategorija(2, "Peceno");
+        Kategorija hamburger = new Kategorija(0, "Hamburger");
+        Kategorija pizza = new Kategorija(1, "Pizza");
+        Kategorija spaghetti = new Kategorija(2, "Spaghetti");
 
-        Sastojci hamburger = new Sastojci(0, "Mleveno meso, lepinja, luk, premazi, zacini");
-        Sastojci pizza = new Sastojci(1, "Sir, sampinjoni, kecap, origano, sunkarica");
-        Sastojci soup = new Sastojci(2, "voda, so, vegeta");
-        Sastojci spaghetti = new Sastojci(3, "Mleveno meso, testenina, kecap, origano");
+        ArrayList<Sastojci> hamburgerSas = new ArrayList<>();
+        hamburgerSas.add(new Sastojci(0, "mleveno meso"));
+        hamburgerSas.add(new Sastojci(1, "salata"));
+        hamburgerSas.add(new Sastojci(2, "lepinja"));
+        hamburgerSas.add(new Sastojci(3, "premazi"));
+
+        ArrayList<Sastojci> pizzaSas = new ArrayList<>();
+        pizzaSas.add(new Sastojci(0, "kackavalj"));
+        pizzaSas.add(new Sastojci(1, "masline"));
+        pizzaSas.add(new Sastojci(2, "pecurke"));
+        pizzaSas.add(new Sastojci(3, "salama"));
+
+        ArrayList<Sastojci> spaghettiSas = new ArrayList<>();
+        spaghettiSas.add(new Sastojci(0, "mleveno meso"));
+        spaghettiSas.add(new Sastojci(1, "spagete"));
+        spaghettiSas.add(new Sastojci(2, "bolonjeze sos"));
+        spaghettiSas.add(new Sastojci(3, "kecap"));
 
         switch (id) {
             case 0:
-                return new Hrana(0, "hamburger.jpg", "Hamburger", "description...", grilovano, hamburger, 500, 300);
+                return new Hrana(0, "hamburger.jpg", "Hamburger", "description...", hamburger, hamburgerSas, 500, 300);
             case 1:
-                return new Hrana(1, "pizza.jpg", "Pizza", "description...", peceno, pizza, 400, 200);
+                return new Hrana(1, "pizza.jpg", "Pizza", "description...", pizza, pizzaSas, 400, 200);
             case 2:
-                return new Hrana(2, "soup.jpg", "Soup", "description...", kuvano, soup, 300, 100);
-            case 3:
-                return new Hrana(3, "spaghetti.jpg", "Spaghetti", "description...", kuvano, spaghetti, 450, 250);
+                return new Hrana(2, "spaghetti.jpg", "Spaghetti", "description...", spaghetti, spaghettiSas, 450, 250);
             default:
                 return null;
 

@@ -1,5 +1,8 @@
 package rs.aleph.android.example12.activities.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by androiddevelopment on 11.10.17..
  */
@@ -11,16 +14,18 @@ public class Hrana {
     private String name;
     private String description;
     private Kategorija category;
-    private Sastojci ingridients;
+    private List<Sastojci> ingridients;
     private int kcal;
     private double price;
 
 
     public Hrana() {
 
+        this.ingridients = new ArrayList<Sastojci>();
+
     }
 
-    public Hrana(int id, String image, String name, String description, Kategorija category, Sastojci ingridients, int kcal, double price) {
+    public Hrana(int id, String image, String name, String description, Kategorija category, ArrayList<Sastojci> ingridients, int kcal, double price) {
         this.id = id;
         this.image = image;
         this.name = name;
@@ -71,11 +76,11 @@ public class Hrana {
         this.category = category;
     }
 
-    public Sastojci getIngridients() {
+    public List<Sastojci> getIngridients() {
         return ingridients;
     }
 
-    public void setIngridients(Sastojci ingridients) {
+    public void setIngridients(List<Sastojci> ingridients) {
         this.ingridients = ingridients;
     }
 
