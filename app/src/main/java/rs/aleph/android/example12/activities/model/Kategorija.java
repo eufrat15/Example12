@@ -41,6 +41,14 @@ public class Kategorija {
         this.name = name;
     }
 
+    public List<Hrana> getFoods() {
+        return foods;
+    }
+
+    public void setFoods(List<Hrana> foods) {
+        this.foods = foods;
+    }
+
     public void addHrana(Hrana hrana) {
 
         foods.add(hrana);
@@ -56,13 +64,7 @@ public class Kategorija {
         return foods.get(position);
     }
 
-    public List<Hrana> getFoods() {
-        return foods;
-    }
 
-    public void setFoods(List<Hrana> foods) {
-        this.foods = foods;
-    }
 
 
 }

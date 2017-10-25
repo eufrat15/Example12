@@ -11,18 +11,17 @@ public class Sastojci {
 
     private int id;
     private String name;
-    private List<Hrana> foods;
+    private Hrana foods;
 
     public Sastojci() {
 
-        foods = new ArrayList<>();
     }
 
     public Sastojci(int id, String name) {
 
         this.id = id;
         this.name = name;
-        foods = new ArrayList<>();
+
     }
 
     public int getId() {
@@ -41,26 +40,10 @@ public class Sastojci {
         this.name = name;
     }
 
-    public void addHrana(Hrana hrana) {
+    public Hrana getFoods() { return foods; }
 
-        foods.add(hrana);
-    }
+    public void setFoods(Hrana foods) {this.foods = foods; }
 
-    public void removeHrana(Hrana hrana) {
-
-        foods.remove(hrana);
-    }
-
-    public Hrana getHrana(int position) {
-
-        return foods.get(position);
-    }
-
-    public List<Hrana> getFoods() {
-        return foods;
-    }
-
-    public void setFoods(List<Hrana> foods) {
-        this.foods = foods;
-    }
+    @Override
+    public String toString() {return name; }
 }
