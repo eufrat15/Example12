@@ -9,12 +9,22 @@
 
         <activity
             android:name="rs.aleph.android.example12.activities.FirstActivity"
-            android:label="Restoran">
+            android:label="Restoran"
+            android:icon="@mipmap/ic_launcher"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activities.SettingsActivity"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/activity_settings_name"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".activities.FirstActivity">
+
         </activity>
 
 
