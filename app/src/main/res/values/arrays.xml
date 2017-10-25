@@ -3,9 +3,8 @@
 
     <string-array name="foods">
         <item>Hamburger</item>
-        <item>Spaghetti</item>
-        <item>Soup</item>
         <item>Pizza</item>
+        <item>Spaghetti</item>
     </string-array>
 
 </resources>
